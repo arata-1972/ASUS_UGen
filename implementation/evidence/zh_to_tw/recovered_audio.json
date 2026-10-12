@@ -1,0 +1,30 @@
+{
+  "status": "audio_recovered",
+  "source": "Previously generated Taigi Taiwanese TTS response",
+  "download_ms": 2533.112875,
+  "audio_bytes": 378924,
+  "audio_sha256": "5ee5ce787b8f76783e4f66fd7ac39e79cb3622a701002ed7f39725aad71dd4bd",
+  "asr_and_translation_stages": [
+    {
+      "text": "我們提出台語語音認誤卡拔用台語說的工作整理成可確認的工作卡這是功能模擬尚未整合優均硬體",
+      "source_language": "zh",
+      "backend": "self_hosted_server_api",
+      "stage": "asr",
+      "latency_ms": 29848.823208,
+      "hardware_accelerator_verified": false
+    },
+    {
+      "text": "阮提出台語語音認誤卡拔用台語講的工課整理成通確認的工作卡這是功能模擬猶未整合優均硬體。",
+      "source_language": "zh",
+      "target_language": "tw",
+      "backend": "self_hosted_server_api",
+      "stage": "translation",
+      "latency_ms": 178.52679199999693,
+      "hardware_accelerator_verified": false
+    }
+  ],
+  "tts_generation_http_status": 200,
+  "tts_generation_latency_ms": null,
+  "tts_generation_latency_not_recorded": true,
+  "hardware_verified": false
+}

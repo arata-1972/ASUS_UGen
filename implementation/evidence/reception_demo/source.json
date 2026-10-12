@@ -1,0 +1,15 @@
+{
+  "source_mandarin": "請問服務台在哪裡？",
+  "generated_taiwanese": "請問服務台佇佗位?",
+  "translation": {
+    "text": "請問服務台佇佗位?",
+    "source_language": "zh",
+    "target_language": "tw",
+    "backend": "self_hosted_server_api",
+    "stage": "translation",
+    "latency_ms": 243.27825000000303,
+    "hardware_accelerator_verified": false
+  },
+  "synthetic": true,
+  "quality_independently_verified": false
+}

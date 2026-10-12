@@ -1,0 +1,23 @@
+[
+  {
+    "label": "unconfigured_server",
+    "status": "failed_as_expected",
+    "code": "BACKEND_NOT_CONFIGURED",
+    "elapsed_ms": 0.8857500000000016,
+    "message": "ASR endpoint is not configured."
+  },
+  {
+    "label": "unconfigured_local_model",
+    "status": "failed_as_expected",
+    "code": "LOCAL_MODEL_NOT_CONFIGURED",
+    "elapsed_ms": 582.2592089999999,
+    "message": "Set BRIDGE_LOCAL_WHISPER_DIR to a complete local Hugging Face Whisper snapshot."
+  },
+  {
+    "label": "unimplemented_openvino",
+    "status": "failed_as_expected",
+    "code": "ASR_BACKEND_UNIMPLEMENTED",
+    "elapsed_ms": 0.5449579999999514,
+    "message": "Only self_hosted_server_api and local_hf_whisper are implemented; UGen/OpenVINO are not."
+  }
+]

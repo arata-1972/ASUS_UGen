@@ -1,0 +1,49 @@
+{
+  "status": "success",
+  "elapsed_ms": 7069.28925,
+  "input_kind": "synthetic_TTS",
+  "client_rss_bytes": 93945856,
+  "client_environment": {
+    "runtime": "v20.18.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M5",
+    "total_memory_bytes": 34359738368
+  },
+  "input_audio_sha256": "5ee5ce787b8f76783e4f66fd7ac39e79cb3622a701002ed7f39725aad71dd4bd",
+  "language": "tw",
+  "translation": true,
+  "tts": true,
+  "stages": [
+    {
+      "text": "阮提出臺語語音認無？疊寡用臺語講的通缺整美成通較任的工作，跤底是公平母語猶未整合有根的體。",
+      "source_language": "tw",
+      "backend": "self_hosted_server_api",
+      "stage": "asr",
+      "latency_ms": 2427.2937080000006,
+      "hardware_accelerator_verified": false
+    },
+    {
+      "text": "我們提出臺語語音認嗎?疊一些用臺語說的缺整美成可以比較任的工作，腳底是公平母語尚未整合有根的體。",
+      "source_language": "tw",
+      "target_language": "zh",
+      "backend": "self_hosted_server_api",
+      "stage": "translation",
+      "latency_ms": 750.9099999999999,
+      "hardware_accelerator_verified": false
+    },
+    {
+      "mime": "audio/wav",
+      "language": "zh",
+      "stage": "tts",
+      "backend": "self_hosted_server_api",
+      "latency_ms": 3883.904124999999,
+      "audio_bytes": 578604,
+      "audio_sha256": "76ab91cc1c87c3631840ac7fb8e40e72cf97118597b4e945ed21369a106082a5",
+      "hardware_accelerator_verified": false
+    }
+  ],
+  "output_text": "我們提出臺語語音認嗎?疊一些用臺語說的缺整美成可以比較任的工作，腳底是公平母語尚未整合有根的體。",
+  "total_stage_latency_ms": 7062.107833,
+  "accelerator_verified": false
+}

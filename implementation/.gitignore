@@ -1,0 +1,6 @@
+.env
+*.private.env
+__pycache__/
+*.pyc
+node_modules/
+run-output/

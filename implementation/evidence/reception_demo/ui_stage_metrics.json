@@ -1,0 +1,25 @@
+[
+  {
+    "text": "請問服務代到位去。",
+    "source_language": "tw",
+    "backend": "self_hosted_server_api",
+    "stage": "asr",
+    "latency_ms": 803.0016250000044,
+    "hardware_accelerator_verified": false
+  },
+  {
+    "text": "請問服務台在哪裡?",
+    "source_language": "tw",
+    "target_language": "zh",
+    "backend": "self_hosted_server_api",
+    "stage": "translation",
+    "latency_ms": 189.35899999999674,
+    "hardware_accelerator_verified": false
+  },
+  {
+    "stage": "tts",
+    "language": "zh",
+    "server_ms": 1146.7411250000005,
+    "client_ms": 1164.0999999940395
+  }
+]
