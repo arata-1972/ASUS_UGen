@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:14,840
+A care worker needs a record that the next shift can trust. TaigiCareNote helps compare a draft with its source before handover. This demonstration runs the new review workflow on fictional text. Audio and speech recognition are not executed.
+
+2
+00:00:14,840 --> 00:00:30,680
+The fictional source says: at nine this morning, the person receiving care reported left knee pain. No dizziness. Two hundred milliliters of water. Each draft statement refers to an exact source position. The rule-based template does not invent a medical summary.
+
+3
+00:00:30,680 --> 00:00:45,720
+For this controlled test, we intentionally change left to right and two hundred to two hundred fifty. The screen flags side, negation, and quantity for a person to review. These are test defects, not measured speech recognition errors.
+
+4
+00:00:45,720 --> 00:00:57,600
+The reviewer compares the source, corrects left and two hundred, and writes a note for each check. No dizziness stays in the record. The software does not infer a diagnosis or recommend treatment.
+
+5
+00:00:57,600 --> 00:01:11,480
+Approval ties the reviewer and time to the content version and fingerprints of the source, draft, and review decisions. JSON and CSV are unlocked only after the checks. Unsaved edits also lock approval and export.
+
+6
+00:01:11,480 --> 00:01:31,480
+The actual JSON and CSV exports carry the same approved version, source evidence, review notes, and events. Editing afterwards creates a new version and locks export again. The existing medical PoC already had review and confirmation. New work links approval and export to content hashes and detailed events.
+
+7
+00:01:31,480 --> 00:01:47,360
+The planned next step is speech recognition on UGen B70 in the designated competition environment. Review checks remain on the host. Hardware compatibility and performance are not demonstrated. The new review logic does not require a large language model.
+
+8
+00:01:47,360 --> 00:02:06,520
+Seventeen local tests pass for review gates, content checks, and export consistency. These are workflow tests, not clinical validation. Next, we will evaluate review time and corrections with permitted fictional or synthetic cases. The goal is a record a person has checked and a colleague can trace.

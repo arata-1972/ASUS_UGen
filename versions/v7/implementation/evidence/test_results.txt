@@ -1,0 +1,74 @@
+
+> taiwanese-speech-bridge@0.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: unconfigured ASR fails before any network request
+ok 1 - unconfigured ASR fails before any network request
+  ---
+  duration_ms: 1.969916
+  ...
+# Subtest: empty ASR output never becomes a success
+ok 2 - empty ASR output never becomes a success
+  ---
+  duration_ms: 0.193292
+  ...
+# Subtest: Taiwanese best transcript and multipart adapter preserve input language
+ok 3 - Taiwanese best transcript and multipart adapter preserve input language
+  ---
+  duration_ms: 15.98975
+  ...
+# Subtest: Mandarin requests specify language and Taiwan output locale
+ok 4 - Mandarin requests specify language and Taiwan output locale
+  ---
+  duration_ms: 0.417625
+  ...
+# Subtest: translation directions do not silently reverse speakers
+ok 5 - translation directions do not silently reverse speakers
+  ---
+  duration_ms: 1.186459
+  ...
+# Subtest: HTTP errors disclose status without backend error bodies or secrets
+ok 6 - HTTP errors disclose status without backend error bodies or secrets
+  ---
+  duration_ms: 0.469167
+  ...
+# Subtest: invalid translation schema is rejected
+ok 7 - invalid translation schema is rejected
+  ---
+  duration_ms: 0.288917
+  ...
+# Subtest: Taiwanese audio cannot redirect outside configured audio origin
+ok 8 - Taiwanese audio cannot redirect outside configured audio origin
+  ---
+  duration_ms: 0.524583
+  ...
+# Subtest: Mandarin PCM becomes a mono 22050 WAV
+ok 9 - Mandarin PCM becomes a mono 22050 WAV
+  ---
+  duration_ms: 0.887791
+  ...
+# Subtest: unsupported speech language is rejected without inference
+ok 10 - unsupported speech language is rejected without inference
+  ---
+  duration_ms: 0.293375
+  ...
+# Subtest: invalid WAV is rejected before any API call
+ok 11 - invalid WAV is rejected before any API call
+  ---
+  duration_ms: 0.150417
+  ...
+# Subtest: unimplemented hardware adapter cannot silently fall back
+ok 12 - unimplemented hardware adapter cannot silently fall back
+  ---
+  duration_ms: 0.11225
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118.955083

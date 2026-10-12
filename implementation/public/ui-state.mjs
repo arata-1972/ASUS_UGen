@@ -1,0 +1,1 @@
+export function controls(snapshot,dirty){return{approve:!dirty&&snapshot.can_approve,export:!dirty&&snapshot.can_export,approvalText:dirty?'Unsaved changes: save before approval or export.':snapshot.approval?'Approved version '+snapshot.approval.version:'Not approved: export is locked.'}}

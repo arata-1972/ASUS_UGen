@@ -1,0 +1,24 @@
+import {createHash} from 'node:crypto';
+export const hash=value=>createHash('sha256').update(typeof value==='string'?value:JSON.stringify(value)).digest('hex');
+export class ReviewError extends Error{constructor(code){super(code);this.code=code}}
+export const csvCell=value=>'"'+String(value??'').replace(/^[\s\uFEFF]*[=+\-@]/,"'$&").replaceAll('"','""')+'"';
+export function spans(source){return [...source.matchAll(/[^。！？\n]+[。！？]?/gu)].map(m=>({start:m.index,end:m.index+m[0].length,text:m[0]}));}
+export class CareNote{
+ constructor(){this.events=[];this.version=0;this.source='';this.items=[];this.resolutions={};this.approval=null;}
+ event(type,detail){this.events.push({sequence:this.events.length+1,time:new Date().toISOString(),type,version:this.version,source_hash:hash(this.source),draft_hash:hash(this.items),...detail});}
+ invalidate(){this.version++;this.resolutions={};this.approval=null;}
+ load(source,{controlledFault=false}={}){if(!source.trim()||source.length>16000)throw new ReviewError('INVALID_SOURCE');this.invalidate();this.source=source;this.items=spans(source).map((span,i)=>({id:'item-'+i,field:'Source statement',value:span.text,evidence:{...span,source_hash:hash(source)}}));if(controlledFault){this.items[0].value=this.items[0].value.replace('左','右');this.items.at(-1).value=this.items.at(-1).value.replace('200mL','250mL');}this.event('source_loaded',{controlled_fault:controlledFault});return this.snapshot();}
+ editItem(id,value){const item=this.items.find(x=>x.id===id);if(!item||!value.trim()||value.length>16000)throw new ReviewError('INVALID_ITEM');const before=item.value;this.invalidate();item.value=value;this.event('draft_edited',{item_id:id,before,after:value});return this.snapshot();}
+ editSource(source){const before=this.source;this.load(source);this.event('source_edited',{before,after:source});return this.snapshot();}
+ flags(){const flags=[];for(const item of this.items){const src=item.evidence.text,val=item.value;const add=(type,label)=>flags.push({id:item.id+':'+type,item_id:item.id,type,label,evidence:item.evidence,resolved:!!this.resolutions[item.id+':'+type],resolution:this.resolutions[item.id+':'+type]||null});
+ const current=this.source.slice(item.evidence.start,item.evidence.end);if(current!==src||item.evidence.source_hash!==hash(this.source))add('STALE_EVIDENCE','Source evidence changed');
+ for(const [type,re,label] of [['SIDE',/[左右](?:膝|手|腳|腿|眼|耳)/gu,'Check left / right'],['NEGATION',/(?:沒有|否認|尚未|未提到|不痛)[^，。；]{0,12}/gu,'Check negation'],['QUANTITY',/\d+(?:\.\d+)?\s*(?:mL|mg|mmHg|cm|度|次)/gu,'Check number and unit']]){const tokens=src.match(re)||[];if(tokens.length)add(type,tokens.every(t=>val.includes(t))?label+' — present in draft':label+' — missing or inconsistent');}
+ if(/\d+(?:\.\d+)?(?![\d.])/u.test(src)&&!(/\d+(?:\.\d+)?\s*(?:mL|mg|mmHg|cm|度|次|點|分鐘)/u.test(src)))add('MISSING_UNIT','Number without a supported unit: do not guess');
+ if(/未知|不明|未記載|未確認/u.test(src))add('UNKNOWN','Unspecified information needs human review');
+ }return flags;}
+ resolve(id,note){if(!this.flags().some(x=>x.id===id)||!note.trim())throw new ReviewError('INVALID_RESOLUTION');this.approval=null;this.resolutions[id]={note,version:this.version};this.event('review_resolved',{flag_id:id,note});return this.snapshot();}
+ approve(reviewer){if(!reviewer.trim()||!this.items.length||this.flags().some(f=>!f.resolved))throw new ReviewError('REVIEW_REQUIRED');this.approval={version:this.version,source_hash:hash(this.source),draft_hash:hash(this.items),review_hash:hash(this.resolutions),reviewer,at:new Date().toISOString()};this.event('approved',{approval:this.approval});return this.snapshot();}
+ export(format){const a=this.approval;if(!a||a.version!==this.version||a.source_hash!==hash(this.source)||a.draft_hash!==hash(this.items)||a.review_hash!==hash(this.resolutions))throw new ReviewError('APPROVAL_REQUIRED');const record={product:'CareNote',schema_version:1,synthetic_case:true,source:this.source,items:this.items,review:this.resolutions,approval:a,events:this.events};if(format==='json')return JSON.stringify(record,null,2);if(format!=='csv')throw new ReviewError('INVALID_FORMAT');const header=['version','source_hash','draft_hash','review_hash','reviewer','approved_at','field','value','source_start','source_end','evidence','audit_events_json'];const rows=this.items.map(i=>[a.version,a.source_hash,a.draft_hash,a.review_hash,a.reviewer,a.at,i.field,i.value,i.evidence.start,i.evidence.end,i.evidence.text,JSON.stringify(this.events)]);return '\uFEFF'+[header,...rows].map(r=>r.map(csvCell).join(',')).join('\r\n');}
+ snapshot(){return{source:this.source,items:this.items,version:this.version,source_hash:hash(this.source),draft_hash:hash(this.items),flags:this.flags(),approval:this.approval,events:this.events,can_approve:this.items.length>0&&this.flags().every(f=>f.resolved),can_export:!!this.approval};}
+}
+export const fixture='今天早上九點，照護對象說左膝疼痛。沒有頭暈。喝水200mL。';

@@ -1,0 +1,90 @@
+[
+  {
+    "sequence": 1,
+    "time": "2026-10-12T15:49:48.118Z",
+    "type": "source_loaded",
+    "version": 1,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "16fc5ae253df2397298cc3d2cc6201d9087131f899d9f3759f870fcb64fb76db",
+    "controlled_fault": true
+  },
+  {
+    "sequence": 2,
+    "time": "2026-10-12T15:49:56.997Z",
+    "type": "draft_edited",
+    "version": 2,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "5160addf6426a385c8bfc16ca913829edfd8cb1b6d6f3fc4e8d59c48b2976346",
+    "item_id": "item-0",
+    "before": "今天早上九點，照護對象說右膝疼痛。",
+    "after": "今天早上九點，照護對象說左膝疼痛。"
+  },
+  {
+    "sequence": 3,
+    "time": "2026-10-12T15:50:04.951Z",
+    "type": "draft_edited",
+    "version": 3,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+    "item_id": "item-2",
+    "before": "喝水250mL。",
+    "after": "喝水200mL。"
+  },
+  {
+    "sequence": 4,
+    "time": "2026-10-12T15:50:11.237Z",
+    "type": "review_resolved",
+    "version": 3,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+    "flag_id": "item-0:SIDE",
+    "note": "Left knee matches the exact source."
+  },
+  {
+    "sequence": 5,
+    "time": "2026-10-12T15:50:18.634Z",
+    "type": "review_resolved",
+    "version": 3,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+    "flag_id": "item-1:NEGATION",
+    "note": "No dizziness is explicitly stated; denial retained."
+  },
+  {
+    "sequence": 6,
+    "time": "2026-10-12T15:50:24.253Z",
+    "type": "review_resolved",
+    "version": 3,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+    "flag_id": "item-2:QUANTITY",
+    "note": "200 mL matches source number and unit."
+  },
+  {
+    "sequence": 7,
+    "time": "2026-10-12T15:50:31.752Z",
+    "type": "approved",
+    "version": 3,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+    "approval": {
+      "version": 3,
+      "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+      "draft_hash": "acfd7227709df5c2f1446ccd3e54435a29e553c81e2b0f9028f8ccd7b682d1a1",
+      "review_hash": "9393a4965041c88dd309e7c2ae2f0ad1af4cf64263b3b480fd020c4bdf7fff07",
+      "reviewer": "Synthetic demo reviewer",
+      "at": "2026-10-12T15:50:31.752Z"
+    }
+  },
+  {
+    "sequence": 8,
+    "time": "2026-10-12T15:51:00.958Z",
+    "type": "draft_edited",
+    "version": 4,
+    "source_hash": "da9ebb6548ced9bf59438b4cf53aa8a50c425fa1516c619d60c333fd20d7ec48",
+    "draft_hash": "1d1686e641cb47fddd29c7d9f74f88e323017cf2d99f1db5c786eac870d4a388",
+    "item_id": "item-2",
+    "before": "喝水200mL。",
+    "after": "喝水200mL。（人工核對）"
+  }
+]

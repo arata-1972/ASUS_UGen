@@ -1,74 +1,99 @@
 
-> taiwanese-speech-bridge@0.1.0 test
+> test
 > node --test tests/*.test.mjs
 
 TAP version 13
-# Subtest: unconfigured ASR fails before any network request
-ok 1 - unconfigured ASR fails before any network request
+# Subtest: exact source spans roundtrip
+ok 1 - exact source spans roundtrip
   ---
-  duration_ms: 1.969916
+  duration_ms: 1.284292
   ...
-# Subtest: empty ASR output never becomes a success
-ok 2 - empty ASR output never becomes a success
+# Subtest: faithful draft copies source without diagnosis
+ok 2 - faithful draft copies source without diagnosis
   ---
-  duration_ms: 0.193292
+  duration_ms: 2.439375
   ...
-# Subtest: Taiwanese best transcript and multipart adapter preserve input language
-ok 3 - Taiwanese best transcript and multipart adapter preserve input language
+# Subtest: left and right discrepancy flag
+ok 3 - left and right discrepancy flag
   ---
-  duration_ms: 15.98975
+  duration_ms: 0.536833
   ...
-# Subtest: Mandarin requests specify language and Taiwan output locale
-ok 4 - Mandarin requests specify language and Taiwan output locale
+# Subtest: quantity discrepancy flag
+ok 4 - quantity discrepancy flag
   ---
-  duration_ms: 0.417625
+  duration_ms: 0.197542
   ...
-# Subtest: translation directions do not silently reverse speakers
-ok 5 - translation directions do not silently reverse speakers
+# Subtest: negation candidate preserves evidence
+ok 5 - negation candidate preserves evidence
   ---
-  duration_ms: 1.186459
+  duration_ms: 0.293083
   ...
-# Subtest: HTTP errors disclose status without backend error bodies or secrets
-ok 6 - HTTP errors disclose status without backend error bodies or secrets
+# Subtest: unspecified units flagged
+ok 6 - unspecified units flagged
   ---
-  duration_ms: 0.469167
+  duration_ms: 0.866375
   ...
-# Subtest: invalid translation schema is rejected
-ok 7 - invalid translation schema is rejected
+# Subtest: approval blocked by unresolved checks
+ok 7 - approval blocked by unresolved checks
   ---
-  duration_ms: 0.288917
+  duration_ms: 0.54575
   ...
-# Subtest: Taiwanese audio cannot redirect outside configured audio origin
-ok 8 - Taiwanese audio cannot redirect outside configured audio origin
+# Subtest: export blocked before approval
+ok 8 - export blocked before approval
   ---
-  duration_ms: 0.524583
+  duration_ms: 0.215459
   ...
-# Subtest: Mandarin PCM becomes a mono 22050 WAV
-ok 9 - Mandarin PCM becomes a mono 22050 WAV
+# Subtest: draft edit invalidates approval and resolutions
+ok 9 - draft edit invalidates approval and resolutions
   ---
-  duration_ms: 0.887791
+  duration_ms: 0.762208
   ...
-# Subtest: unsupported speech language is rejected without inference
-ok 10 - unsupported speech language is rejected without inference
+# Subtest: source edit invalidates approved hash
+ok 10 - source edit invalidates approved hash
   ---
-  duration_ms: 0.293375
+  duration_ms: 0.67275
   ...
-# Subtest: invalid WAV is rejected before any API call
-ok 11 - invalid WAV is rejected before any API call
+# Subtest: export hash recheck catches unauthorized mutation
+ok 11 - export hash recheck catches unauthorized mutation
   ---
-  duration_ms: 0.150417
+  duration_ms: 0.437541
   ...
-# Subtest: unimplemented hardware adapter cannot silently fall back
-ok 12 - unimplemented hardware adapter cannot silently fall back
+# Subtest: JSON CSV share same approved version and audit
+ok 12 - JSON CSV share same approved version and audit
   ---
-  duration_ms: 0.11225
+  duration_ms: 1.696709
   ...
-1..12
-# tests 12
+# Subtest: CSV quotes comma newline quote and neutralizes formula
+ok 13 - CSV quotes comma newline quote and neutralizes formula
+  ---
+  duration_ms: 0.100458
+  ...
+# Subtest: empty reviewer or resolution rejected
+ok 14 - empty reviewer or resolution rejected
+  ---
+  duration_ms: 0.434875
+  ...
+# Subtest: review decision change requires new approval
+ok 15 - review decision change requires new approval
+  ---
+  duration_ms: 0.851792
+  ...
+# Subtest: review hash detects mutation after approval
+ok 16 - review hash detects mutation after approval
+  ---
+  duration_ms: 0.531708
+  ...
+# Subtest: unsaved source draft or review text locks controls even for approved content
+ok 17 - unsaved source draft or review text locks controls even for approved content
+  ---
+  duration_ms: 0.470583
+  ...
+1..17
+# tests 17
 # suites 0
-# pass 12
+# pass 17
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 118.955083
+# duration_ms 93.135834

@@ -1,40 +1,28 @@
-# TaiwaneseSpeechBridge — working integration prototype
+# CareNote v8 — approval tied to the reviewed content
 
 
-TaiwaneseSpeechBridge accepts WAV speech, transcribes it, optionally translates Taiwanese ↔ Mandarin, and optionally generates speech in the other language. The local browser UI lets a person inspect and edit both the recognized text and translation before requesting speech. Language selection is manual. There is no LLM, automatic language detector, task-card extraction, or automatic business action.
+This independent local prototype helps a care-record reviewer compare a Mandarin draft with exact source statements. The default draft copies source clauses; it is a rule-based template, not an LLM-generated medical summary. The demonstration uses fictional text and a deliberately altered draft. No patient recording or care ASR/translation request was executed in this demonstration.
 
-The implemented default backend calls existing self-hosted ASR, EOLE translation, and TTS HTTP services. Running this UI on a local computer does **not** mean inference ran on that computer or on ASUS hardware. `self_hosted_server_api` metrics include upstream processing and network latency. No UGen300/Hailo, B70/Intel GPU, or OpenVINO execution was verified. Hardware paths are unimplemented and return explicit errors rather than a simulated result.
-
-Requirements: Node.js 20 or later; the default HTTP integration has no npm dependencies. `npm test` uses Node's built-in test runner and in-memory protocol fixtures. Fixture tests are not model accuracy, throughput, or hardware benchmarks. The optional offline CPU ASR adapter additionally requires installed Python, PyTorch, Transformers, SoundFile, ffmpeg, and a complete local Hugging Face Whisper snapshot; Taiwanese also requires its matching fine-tuned PEFT adapter. Models are never automatically downloaded.
-
-From this directory:
+Run Node.js 20+ from this directory:
 
 ```sh
 npm test
-node server.mjs
+npm start
 ```
 
-Open `http://127.0.0.1:8766`. The server binds only to loopback. With no endpoint configuration, the UI opens but speech requests fail explicitly with `BACKEND_NOT_CONFIGURED`. Supply the authorized upstream URLs listed in `config.example.env` through your existing environment/configuration mechanism. Configure `BRIDGE_CHINESE_TTS_KEY` privately for Mandarin TTS. No key, existing secret configuration, model weights, or customer credentials belong in this package or a published repository. Do not configure paid customer billing gateways as backend URLs.
+Open http://127.0.0.1:8768. Load the synthetic case or controlled discrepancy test. Compare the draft with each exact source span, edit values, save changes, and write review notes for the flagged candidates. Supply a demo reviewer label and approve. JSON and CSV both carry the approved version, source/draft/review SHA-256 hashes, source positions, and event history. Editing source or draft clears previous checks and approval. Changing a review note clears approval. Export checks current hashes again. Hashes detect content disagreement; this local event list is not an immutable compliance audit system.
 
-Use the CLI after configuration:
+| Capability | Existing medical PoC background | New independent v8 work |
+|---|---|---|
+| Taiwanese speech → Mandarin; source references; side/negation/number review; human confirmation; JSON/CSV | Already present | Not claimed as first developed |
+| Invalidate confirmation after editing | Already present | Retained behavior |
+| Explicit version and source/draft/review hashes tied to approval | Not found in inspected old files | Implemented |
+| Recheck approved hashes at export | Not found | Implemented |
+| Full before/after edit events and linked approval/export content | Not found | Implemented |
+| Exact source offsets plus source hash | Old source IDs/quoted evidence | New offset/hash representation |
 
-```sh
-node cli.mjs --audio /absolute/input.wav --language tw --translate --tts --out /absolute/run-output
-```
+The prior https://learn-language.tokyo/zh-TW/poc-medical-20261005 application is background technology. It uses an LLM for draft generation; v8's new review template does not. Neither existing service nor its backend was modified. New work is not proof of clinical effectiveness, recognition accuracy, device inference, regulatory compliance, or a production medical record system.
 
-Use `--language zh` for Mandarin → Taiwanese. Omit `--translate` or `--tts` to disable that step. A successful run creates `result.json` and, when TTS is requested, `output.wav`. An in-progress `partial.json` records completed ASR/translation stages; it is not a success report. HTTP failures, missing text, incompatible translation responses, unexpected audio hosting origins, and missing credentials fail explicitly. Logs never include authorization headers or upstream error bodies.
+Optional WAV → Taiwanese ASR → reviewed transcript → EOLE Mandarin translation adapters are available through the expanded audio section. They require authorized private environment configuration. With no endpoints, requests fail clearly. See the retained `bridge.mjs` configuration variables; no secrets or upstream addresses are included. The adapter is reused background integration code. No automatic model download or paid customer billing wrapper is used. UGen/OpenVINO execution is not implemented or verified. The planned Stage II competition deployment must be verified in its designated environment.
 
-Optional offline ASR:
-
-```sh
-export BRIDGE_ASR_BACKEND=local_hf_whisper
-export BRIDGE_LOCAL_WHISPER_DIR=/absolute/complete-whisper-snapshot
-export BRIDGE_LOCAL_TAIGI_ADAPTER_DIR=/absolute/matching-taigi-adapter
-node cli.mjs --audio /absolute/input.wav --language tw --out /absolute/local-run
-```
-
-This is a CPU Hugging Face execution path, not OpenVINO or UGen execution. Missing/incomplete models cause `LOCAL_MODEL_NOT_CONFIGURED`, `LOCAL_MODEL_INCOMPLETE`, or a corresponding explicit error. There is no server fallback. EOLE and TTS remain server APIs if their optional steps are enabled.
-
-UI flow: choose Taiwanese or Mandarin → select a WAV file → transcribe → inspect/edit the original → translate if needed → inspect/edit translation → request and play speech → download audio and inspect measured stage latencies. The UI does not access the microphone or upload any file before the person clicks transcription. Synthetic speech is a transport/integration test, not evidence of real-speaker recognition quality.
-
-See `ARCHITECTURE.md`, `BENCHMARK.md`, and `evidence/`. Version 5 artifacts remain as historical materials. The version 7 submission retains the version 6 implementation and measurements; no competition form has been submitted.
+All cases are fictional. Use only synthetic test data here. Review rules flag candidates and omissions; they do not establish medical correctness, diagnose, prescribe, or recommend treatment. The in-memory single-user state is lost when the server restarts. This package and version 8 video are new local deliverables; prior versions remain preserved.
