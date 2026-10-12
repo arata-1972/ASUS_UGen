@@ -1,6 +1,6 @@
 # 台語語音任務卡 / 台湾語音声タスクカード
 
-ASUS UGen AI League 2026 · Workplace AI · Stage I · v3
+ASUS UGen AI League 2026 · Workplace AI · Stage I · v4
 
 ## 繁體中文
 
@@ -80,12 +80,22 @@ Stage I は設計と模擬の段階です。直近の構想は既存の外部 Ta
 
 ## 提交文件 / 提出文書
 
-- [繁體中文提案 PDF](proposals/proposal_zh-TW_v3.pdf) / [日本語全文訳 PDF](proposals/proposal_ja_v3.pdf)
-- [提案全文對譯 / 提案全文対訳](proposals/proposal_full_translation_zh-TW_ja_v3.md)
-- [現行與未來架構 / 現行・将来構成：繁體中文](architecture/architecture_zh-TW_v3.pdf) / [日本語](architecture/architecture_ja_v3.pdf)
-- [模擬影片全文腳本 / 模擬動画全文台本](demo/demo_script_zh_ja_v3.md)
+- [繁體中文提案 PDF](proposals/proposal_zh-TW_v4.pdf) / [日本語全文訳 PDF](proposals/proposal_ja_v4.pdf)
+- [提案全文對譯 / 提案全文対訳](proposals/proposal_full_translation_zh-TW_ja_v4.md)
+- [現行與未來架構 / 現行・将来構成：繁體中文](architecture/architecture_zh-TW_v4.pdf) / [日本語](architecture/architecture_ja_v4.pdf)
+- [模擬影片全文腳本 / 模擬動画全文台本](demo/demo_script_zh_ja_v4.md)
 
 GitHub： https://github.com/arata-1972/ASUS_UGen
 
 本儲存庫為 Stage I 設計與模擬文件，尚未包含可部署於 UGen 的完成程式。
 本リポジトリは Stage I の設計・模擬文書です。UGen に配置できる完成プログラムはまだ含みません。
+
+## 功能模擬影片 / 機能模擬動画
+
+[YouTube 限定公開 / リンク限定公開](https://youtu.be/mQNoCTGN9Zw)
+
+160 秒的繁體中文功能模擬影片。影片清楚標示設計構想、UGen 尚未整合；不代表實際硬體推論。
+160秒の繁体字機能模擬動画です。設計構想とUGen未統合を明示しており、実際のハードウェア推論ではありません。
+
+v3 檔案留存於此儲存庫；最新提交文件為 v4。
+v3のファイルも本リポジトリに保持しています。最新の提出文書はv4です。
