@@ -1,6 +1,6 @@
 # 台語語音任務卡
 
-ASUS UGen AI League 2026 · Workplace AI · Stage I · v4
+ASUS UGen AI League 2026 · Workplace AI · Stage I · v5
 
 
 ### 用途
@@ -42,19 +42,19 @@ Stage I 仍為設計與模擬。近期構想使用既有外部 Taigi 語音 API�
 
 ## 提交文件
 
-- [繁體中文提案 PDF](proposals/proposal_zh-TW_v4.pdf)
-- [繁體中文提案 PowerPoint](proposals/proposal_zh-TW_v4.pptx)
-- [提案全文](proposals/proposal_text_zh-TW_v4.md)
-- [現行與未來架構](architecture/architecture_zh-TW_v4.pdf)
-- [功能模擬影片完整腳本](demo/demo_script_zh-TW_v4.md)
-- [繁體中文字幕](demo/demo_zh-TW_v4.srt)
+- [繁體中文提案 PDF](proposals/proposal_zh-TW_v5.pdf)
+- [繁體中文提案 PowerPoint](proposals/proposal_zh-TW_v5.pptx)
+- [提案全文](proposals/proposal_text_zh-TW_v5.md)
+- [現行與未來架構](architecture/architecture_zh-TW_v5.pdf)
+- [功能模擬影片完整腳本](demo/demo_script_zh-TW_v5.md)
+- [繁體中文字幕](demo/demo_zh-TW_v5.srt)
 
 GitHub：https://github.com/arata-1972/ASUS_UGen
 
 ## 功能模擬影片
 
-[YouTube 不公開列出](https://youtu.be/mQNoCTGN9Zw)
+[YouTube 不公開列出](https://youtu.be/pBmQkibMkoA)
 
-160 秒的繁體中文功能模擬影片。影片清楚標示設計構想與 UGen 尚未整合，不代表實際硬體推論。
+繁體中文功能模擬影片，全部場景配有 Taigi 華語語音合成旁白。旁白是實際生成的華語說明音訊；畫面中的語音辨識、工作卡整理與 UGen 操作仍為模擬。影片清楚標示設計構想與 UGen 尚未整合，不代表實際硬體推論。
 本儲存庫為 Stage I 設計與模擬文件，尚未包含可部署於 UGen 的完成程式。
-v3 文件留存於此儲存庫；最新提交文件為 v4。
+既有版本文件留存於此儲存庫；最新提交文件為 v5。
