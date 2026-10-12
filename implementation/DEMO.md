@@ -1,7 +1,7 @@
 # Prototype demo instructions
 
 
-This is a local review procedure, not an uploaded competition video. The published Traditional Chinese video script is linked from the repository README.
+This is a local review procedure, not an uploaded competition video. The published English video script is linked from the repository README.
 
 ### 1. Local UI
 

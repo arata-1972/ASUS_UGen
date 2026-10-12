@@ -1,0 +1,31 @@
+1
+00:00:00,000 --> 00:00:13,280
+A visitor speaks Taiwanese. A reception worker speaks Mandarin. Our prototype helps them communicate through speech recognition, translation, and audio playback. It does not use a large language model.
+
+2
+00:00:13,280 --> 00:00:25,000
+For this test, our own translation and Taiwanese speech synthesis created the question, Where is the reception desk? The input is synthetic Taiwanese audio, not a recording of a visitor.
+
+3
+00:00:25,000 --> 00:00:41,600
+These are screenshots from actual prototype operations. The interface is in Traditional Chinese, with English explanations. We selected Taiwanese, uploaded the WAV, and called our own speech recognition server. This request took about zero point eight seconds.
+
+4
+00:00:41,600 --> 00:00:54,120
+The recognition result contains errors. We show them honestly. The operator refers to the known test sentence and corrects the original question before translating. This check is essential for communication.
+
+5
+00:00:54,120 --> 00:01:07,160
+After correction, our translation service returns the Mandarin question, Where is the reception desk? This request took about zero point two seconds. The user can still edit the translation before playing it.
+
+6
+00:01:07,160 --> 00:01:20,440
+The user confirms the text and requests Mandarin speech. Our own text to speech server generates the audio in just over one second. The browser plays it, so the reception worker can hear the question and respond.
+
+7
+00:01:20,440 --> 00:01:35,600
+The current prototype runs recognition, translation, and speech synthesis on our own servers. The next step is to deploy suitable models in the designated competition environment and measure performance. Hardware integration is not complete.
+
+8
+00:01:35,600 --> 00:01:52,200
+The prototype connects two languages through text that people can review. These single sample measurements include network time. They do not establish recognition accuracy or accelerator performance. Next, we will evaluate real speech and verify the required hardware.

@@ -37,4 +37,4 @@ This is a CPU Hugging Face execution path, not OpenVINO or UGen execution. Missi
 
 UI flow: choose Taiwanese or Mandarin → select a WAV file → transcribe → inspect/edit the original → translate if needed → inspect/edit translation → request and play speech → download audio and inspect measured stage latencies. The UI does not access the microphone or upload any file before the person clicks transcription. Synthetic speech is a transport/integration test, not evidence of real-speaker recognition quality.
 
-See `ARCHITECTURE.md`, `BENCHMARK.md`, and `evidence/`. Version 5 artifacts remain as historical materials. This is the version 6 implementation; no competition form has been submitted.
+See `ARCHITECTURE.md`, `BENCHMARK.md`, and `evidence/`. Version 5 artifacts remain as historical materials. The version 7 submission retains the version 6 implementation and measurements; no competition form has been submitted.
